@@ -5,7 +5,6 @@ class RailsExceptionHandler::Parser
     @env = env
     @request  = request
     @exception = exception
-    #@controller = controller
     @external_info = {}
     @internal_info = {}
     parse
