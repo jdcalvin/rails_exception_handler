@@ -1,11 +1,11 @@
 class RailsExceptionHandler::Parser
   attr_accessor :external_info, :internal_info
 
-  def initialize(env, request, exception, controller)
+  def initialize(env, request, exception)
     @env = env
     @request  = request
     @exception = exception
-    @controller = controller
+    #@controller = controller
     @external_info = {}
     @internal_info = {}
     parse

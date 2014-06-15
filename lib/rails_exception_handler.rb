@@ -23,9 +23,16 @@ class RailsExceptionHandler
     end
 
     Rails.configuration.action_dispatch.show_exceptions = true
-    Rails.configuration.consider_all_requests_local = false
+    Rails.configuration.consider_all_requests_local = find_environment
     require File.expand_path(File.dirname(__FILE__)) + '/patch/show_exceptions.rb'
     configuration.run_callback
+  end
+
+  def self.find_environment
+    if configuration.environments.to_s.include? "development"
+      return true if Rails.env == "development"
+    end
+    false
   end
 end
 

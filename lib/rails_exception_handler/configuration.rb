@@ -6,13 +6,13 @@ class RailsExceptionHandler::Configuration
       database: 'exception_database',
       record_table: 'error_messages'
     }
-    @environments = [:production]
+    @environments = []
     @storage_strategies = []
     @filters = []
     @store_user_info = false
-    @fallback_layout = 'application'
-    @response_mapping = {}
-    @responses = {}
+    #@fallback_layout = 'application'
+    #@response_mapping = {}
+    #@responses = {}
   end
 
   def active_record?

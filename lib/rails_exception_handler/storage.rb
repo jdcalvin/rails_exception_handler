@@ -23,6 +23,17 @@ class RailsExceptionHandler::Storage
     Rails.logger.fatal(message)
   end
 
+  def self.local_storage(info)
+    message = ""
+    info.each do |key,val|
+      message += "#{key.to_s.upcase}: #{val.to_s}"+"\n"
+    end
+    File.open('log/exceptions.txt', 'a+') do |f|
+      f << message
+      f << "-"*80+"\n\n"
+    end
+  end
+
   def self.remote_url(target, info)
     uri = URI.parse(target)
     params = flatten_hash({:error_message => info})
